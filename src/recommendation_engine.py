@@ -29,7 +29,10 @@ cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
 
 print("✅ Cosine similarity matrix created!")
 print("Matrix shape:", cosine_sim.shape)
+pickle.dump(cosine_sim, open("models/cosine_similarity.pkl", "wb"))
 
+print("✅ Cosine similarity matrix created and saved successfully at /models/cosine_similarity.pkl!")
+print("Matrix shape:", cosine_sim.shape)
 
 def recommend(movie_name):
     # Ensure lowercase matching
@@ -62,3 +65,8 @@ def recommend(movie_name):
 if __name__ == "__main__":
     movie = input("Enter a movie name: ")
     recommend(movie)
+    
+    
+    
+    
+
