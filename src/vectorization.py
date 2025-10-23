@@ -62,3 +62,12 @@ pickle.dump(tfidf, open("models/tfidf_vectorizer.pkl", "wb"))
 pickle.dump(tfidf_matrix, open("models/tfidf_matrix.pkl", "wb"))
 
 print("✅ TF-IDF vectorizer and matrix saved in /models/")
+
+
+
+
+
+print("\nVerification Summary:")
+print("Movies:", len(df))
+print("Features (words):", len(tfidf.get_feature_names_out()))
+print("Matrix shape:", tfidf_matrix.shape)
