@@ -1,4 +1,5 @@
 import os
+import pickle
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 
@@ -41,3 +42,23 @@ tfidf_matrix = tfidf.fit_transform(df['combined'])
 
 print("\n✅ TF-IDF matrix created successfully!")
 print("Shape of matrix:", tfidf_matrix.shape)
+
+
+# Check the Vocabulary
+print("\nSample feature names:")
+print(tfidf.get_feature_names_out()[:20])
+
+
+count_vec = CountVectorizer(stop_words='english', max_features=5000)
+count_matrix = count_vec.fit_transform(df['combined'])
+
+print("\nCount matrix shape:", count_matrix.shape)
+
+
+
+
+# Save TF-IDF vectorizer and feature matrix
+pickle.dump(tfidf, open("models/tfidf_vectorizer.pkl", "wb"))
+pickle.dump(tfidf_matrix, open("models/tfidf_matrix.pkl", "wb"))
+
+print("✅ TF-IDF vectorizer and matrix saved in /models/")
